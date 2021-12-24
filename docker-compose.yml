@@ -1,22 +1,31 @@
-version: '2.4'
-
+version: '3.8'
 services:
   octoprint:
-    image: octoprint/octoprint
-    restart: unless-stopped
-    ports:
-      - 80:80
-    # devices:
-    # use `python -m serial.tools.miniterm` to see what the name is of the printer
-    #  - /dev/ttyACM0:/dev/ttyACM0
-    #  - /dev/video0:/dev/video0
-    volumes:
-     - octoprint:/octoprint
-    # uncomment the lines below to ensure camera streaming is enabled when
-    # you add a video device
-    #environment:
-    #  - ENABLE_MJPG_STREAMER=true
-  
+      container_name: OctoPrint_PrintBot
+      image: eriklou/octoprint:latest
+      stdin_open: true
+      tty: true
+      hostname: PrintBot
+      restart: unless-stopped
+      ports:
+        - "800:80"
+        - "2222:22"
+      volumes:
+        - /home/eriklou/rigs/ender3Pro/octoprint:/octoprint
+      environment:
+        - ENABLE_MJPG_STREAMER=true
+        - MJPG_STREAMER_INPUT=-n -r 1280x720 -f 30
+      devices:
+      #Printer Port
+        - /dev/ttyACM0:/dev/ttyACM0
+      #Webcam port
+        - /dev/video0:/dev/video0
+        
+      logging:
+        driver: syslog
+        options:
+          syslog-address: "tcp://192.168.1.9:514"
+
   ####
   # uncomment if you wish to edit the configuration files of octoprint
   # refer to docs on configuration editing for more information
@@ -33,8 +42,3 @@ services:
   #    - PUID=0
   #    - GUID=0
   #    - TZ=America/Chicago
-  #  volumes:
-  #    - octoprint:/octoprint
-
-volumes:
-  octoprint:

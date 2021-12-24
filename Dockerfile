@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
   libprotobuf-dev \
   libv4l-dev \
   openssh-client \
+  openssh-server \
   v4l-utils \
   xz-utils \
   zlib1g-dev
@@ -81,6 +82,8 @@ WORKDIR /octoprint
 
 # port to access haproxy frontend
 EXPOSE 80
+# SSH Server Access
+EXPOSE 22 
 
 VOLUME /octoprint
 
