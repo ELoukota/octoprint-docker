@@ -39,16 +39,16 @@ RUN apt-get update && apt-get install -y \
   libprotobuf-dev \
   libv4l-dev \
   openssh-client \
-  openssh-server \
-  sudo\
+#  openssh-server \
+#  sudo\
   v4l-utils \
   xz-utils \
   zlib1g-dev
 
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 octolou
-RUN  echo 'octolou:docker1' | chpasswd
-RUN service ssh start
-CMD ["/usr/sbin/sshd","-D"]
+#RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 octolou
+#RUN  echo 'octolou:docker1' | chpasswd
+#RUN service ssh start
+#CMD ["/usr/sbin/sshd","-D"]
 
 
 # unpack s6

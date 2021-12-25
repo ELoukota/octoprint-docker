@@ -9,7 +9,6 @@ services:
       restart: unless-stopped
       ports:
         - "800:80"
-        - "2222:22"
       volumes:
         - /home/eriklou/rigs/ender3Pro/octoprint:/octoprint
       environment:
