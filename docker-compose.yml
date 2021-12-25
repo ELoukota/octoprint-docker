@@ -20,10 +20,14 @@ services:
       #Webcam port
         - /dev/video0:/dev/video0
         
-      logging:
-        driver: syslog
-        options:
-          syslog-address: "tcp://192.168.1.9:514"
+#      logging:
+#        driver: syslog
+#        options:
+#          syslog-address: "tcp://192.168.1.9:514"
+#          tag: "container_name/{{.Name}}"
+#          labels: "${ENV_NAME}"
+#          syslog-facility: "daemon"
+          
 
   ####
   # uncomment if you wish to edit the configuration files of octoprint
