@@ -19,7 +19,7 @@ services:
         - /dev/ttyACM0:/dev/ttyACM0
       #Webcam port
         - /dev/video0:/dev/video0
-        
+
 #      logging:
 #        driver: syslog
 #        options:
@@ -34,14 +34,14 @@ services:
   # refer to docs on configuration editing for more information
   ####
 
-  #config-editor:
+  #  config-editor:
   #  image: linuxserver/code-server
   #  ports:
-  #    - 8443:8443
+  #    - "801:8443"
   #  depends_on:
   #    - octoprint
   #  restart: unless-stopped
   #  environment:
   #    - PUID=0
   #    - GUID=0
-  #    - TZ=America/Chicago
+  #    - TZ=America/Vancover

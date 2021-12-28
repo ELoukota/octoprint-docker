@@ -39,17 +39,9 @@ RUN apt-get update && apt-get install -y \
   libprotobuf-dev \
   libv4l-dev \
   openssh-client \
-#  openssh-server \
-#  sudo\
   v4l-utils \
   xz-utils \
   zlib1g-dev
-
-#RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 octolou
-#RUN  echo 'octolou:docker1' | chpasswd
-#RUN service ssh start
-#CMD ["/usr/sbin/sshd","-D"]
-
 
 # unpack s6
 COPY --from=s6build /tmp /tmp
@@ -90,7 +82,7 @@ WORKDIR /octoprint
 # port to access haproxy frontend
 EXPOSE 80
 # SSH Server Access
-EXPOSE 22 
+#EXPOSE 22 
 
 VOLUME /octoprint
 
