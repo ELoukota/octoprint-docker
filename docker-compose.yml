@@ -38,6 +38,8 @@ services:
   #  image: linuxserver/code-server
   #  ports:
   #    - "801:8443"
+  #  volumes:
+  #    - /home/eriklou/rigs/ender3Pro/octoprint:/octoprint
   #  depends_on:
   #    - octoprint
   #  restart: unless-stopped
